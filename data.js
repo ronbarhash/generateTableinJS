@@ -30,7 +30,7 @@ function renderTable(data){
     table.appendChild(createRowElement("номер договора", data.number, 1));
     table.appendChild(createRowElement("дата подписания", data.date_sign, 1));
     table.appendChild(createRowElement("информация про сервисы", null, 2));
-    table.appendChild(createRowElement(null, data.title_service, 1));
+    table.appendChild(createRowElement(data.title_service, null, 2));
 }
 
 function createRowElement(title, content, col=1){
@@ -41,17 +41,19 @@ function createRowElement(title, content, col=1){
             var td1 = document.createElement("td");
             td1.innerHTML = title;
             var td2 = document.createElement("td");
-            td1.innerHTML = content;
+            td2.innerHTML = content;
             tr.appendChild(td1);
             tr.appendChild(td2);
-            return tr;
+            break;
         case 2:
-        var b = document.createElement("b");
-        b.innerHTML = title;    
-        var td = document.createElement("td");
+            var b = document.createElement("b");
+            b.innerHTML = title;    
+            var td = document.createElement("td");
             td.setAttribute("colspan",2);
             td.appendChild(b);
             tr.appendChild(td);
-            return tr; 
-    }
+            break;
+        }
+        console.log(col,title,content);
+    return tr; 
 }
