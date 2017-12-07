@@ -10,7 +10,6 @@ $(document).ready(function(){
               renderTable(responce);
 
           });
-          $( "span" ).text( "Validated..." ).show();
           return;
         }
 
@@ -22,7 +21,9 @@ $(document).ready(function(){
 function renderTable(data){
     var table = document.getElementsByTagName("table")[0];
     table.innerHTML="";
-
+    if (!data) {
+        table.innerHTML = "Ничего не найдено"; return;
+    } 
     table.appendChild(createRowElement("информация про клиента", null, 2));
     table.appendChild(createRowElement("название клиента", data.name_customer, 1));
     table.appendChild(createRowElement("название клиента", data.company, 1));
